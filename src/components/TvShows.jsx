@@ -5,6 +5,7 @@ import { Container } from "./NavBar";
 import "../Styles/Movies.css";
 import axios from "axios";
 import TrailerTvShows from "../Trailers/TrailerTvShows";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function TvShows() {
   const { toggle, inputValue } = useContext(Container);
@@ -15,6 +16,8 @@ function TvShows() {
   const [title, setTitle] = useState("");
   const Api = `https://api.themoviedb.org/3/${Shown}/tv`;
   const Images = "https://image.tmdb.org/t/p/w500";
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const TvShows = async () => {
     const data = await axios.get(Api, {
@@ -37,6 +40,22 @@ function TvShows() {
     setTrailer(!trailer);
   };
 
+  const DetailPage = (shows) => {
+    console.log(shows);
+    navigate("/detailPage", {
+      state: {
+        image: shows.poster_path || shows.backdrop_path,
+        title: shows.title || shows.original_name,
+        original_title: shows.original_title,
+        genre: shows.genre_ids,
+        release: shows.release_date,
+        rating: shows.vote_avarage,
+        popularity: shows.popularity,
+        description: shows.overview,
+      },
+    });
+  };
+
   return (
     <Fragment>
       <div className={toggle ? "mainBgColor" : "secondaryBgColor"}>
@@ -46,7 +65,7 @@ function TvShows() {
               <Fragment key={shows.id}>
                 <div id={trailer ? "container" : "NoContainer"}>
                   <AiFillPlayCircle color="#ff206e" fontSize={40} id={trailer ? "playIcon" : "hide"} onClick={() => TvShowTitle(shows)} />
-                  <img src={shows.poster_path ? `${Images}${shows.poster_path}` : "https://via.placeholder.com/500x750.png/000000/FFFFFF/%20C/O%20https://placeholder.com/?text=No+image"} alt="" onClick={() => TvShowTitle(shows)} />
+                  <img src={shows.poster_path ? `${Images}${shows.poster_path}` : "https://via.placeholder.com/500x750.png/000000/FFFFFF/%20C/O%20https://placeholder.com/?text=No+image"} alt="" onClick={() => DetailPage(shows)} />
                   <h3 id={shows.name.length > 0 ? "smaller-Text" : ""} className={toggle ? "mainColor" : "secondaryColor"}>
                     {shows.name}
                   </h3>
