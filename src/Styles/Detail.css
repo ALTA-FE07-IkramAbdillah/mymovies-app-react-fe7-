@@ -1,0 +1,18 @@
+.card-detail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 2%;
+}
+.title {
+  font-style: Bold;
+  padding-top: 5%;
+}
+.Release {
+  font-style: Bold;
+  padding-top: 1rem;
+}
+.Description {
+  font-style: Bold;
+  padding-top: 5rem;
+}
