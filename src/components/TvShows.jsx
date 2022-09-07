@@ -1,14 +1,14 @@
 import React, { Fragment, useEffect, useState, useContext } from "react";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
-import { Container } from "./NavBar";
+import { Containers } from "./NavBar";
 import "../Styles/Movies.css";
 import axios from "axios";
 import TrailerTvShows from "../Trailers/TrailerTvShows";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function TvShows() {
-  const { toggle, inputValue } = useContext(Container);
+  const { toggle, inputValue } = useContext(Containers);
   const input = inputValue;
   const [showData, setShowData] = useState([]);
   const [trailer, setTrailer] = useState(true);

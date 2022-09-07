@@ -1,5 +1,4 @@
 nav {
-  width: 100vw;
   display: flex;
   justify-content: space-between;
   background-color: #001219;
@@ -83,6 +82,7 @@ span #HomeLight:hover,
   transition: 0.6s;
 }
 .input-group input {
+  margin-left: 250px;
   position: relative;
   width: 323px;
   height: 4vh;
@@ -95,6 +95,7 @@ span #HomeLight:hover,
   font-size: 1rem;
   color: black;
 }
+
 .input-group input::placeholder {
   color: black;
 }

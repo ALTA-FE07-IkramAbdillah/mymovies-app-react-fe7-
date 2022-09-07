@@ -1,5 +1,5 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
-import { Container } from "./NavBar";
+import { Containers } from "./NavBar";
 import { AiOutlineClose, AiFillPlayCircle } from "react-icons/ai";
 import axios from "axios";
 import "../Styles/Movies.css";
@@ -7,7 +7,7 @@ import TrailerTrends from "../Trailers/TrailerTrends";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function Trends() {
-  const { toggle } = useContext(Container);
+  const { toggle } = useContext(Containers);
   const Api = "https://api.themoviedb.org/3";
   const TrendsShown = "/trending/all/week";
   const [trendArray, setTrendArray] = useState([]);

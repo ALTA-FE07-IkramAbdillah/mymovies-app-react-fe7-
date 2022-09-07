@@ -2,13 +2,13 @@ import axios from "axios";
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
-import { Container } from "./NavBar";
+import { Containers } from "./NavBar";
 import "../Styles/Movies.css";
 import TrailerMovies from "../Trailers/TrailerMovies";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Movies = () => {
-  const { toggle, inputValue } = useContext(Container);
+  const { toggle, inputValue } = useContext(Containers);
   const input = inputValue;
   const [moviesData, setMoviesData] = useState([]);
   const [trailer, setTrailer] = useState(true);
@@ -67,7 +67,7 @@ const Movies = () => {
                 <div id={trailer ? "container" : "NoContainer"}>
                   <AiFillPlayCircle color="#ff206e" fontSize={40} id={trailer ? "playIcon" : "hide"} onClick={() => MoviesTitle(movie)} />
                   <img src={movie.poster_path ? `${Images}${movie.poster_path}` : "https://via.placeholder.com/500x750.png/000000/FFFFFF/%20C/O%20https://placeholder.com/?text=No+image"} alt="" onClick={() => DetailPage(movie)} />
-                  <h3 id={movie.title.length > 30 ? "smaller-Text" : ""} className={toggle ? "mainColor" : "secondary"}>
+                  <h3 id={movie.title.length > 30 ? "smaller-Text" : "smaller-Text"} className={toggle ? "mainColor" : "secondary"}>
                     {movie.title}
                   </h3>
                 </div>
